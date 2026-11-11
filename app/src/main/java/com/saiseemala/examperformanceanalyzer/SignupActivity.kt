@@ -4,6 +4,7 @@ package com.saiseemala.examperformanceanalyzer
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.location.Address
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -48,6 +49,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.database.FirebaseDatabase
+import com.saiseemala.examperformanceanalyzer.ui.theme.BlueShade
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -76,8 +78,8 @@ fun FillActivityScreen() {
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
     var FullName by remember { mutableStateOf("") }
-    var CompanyName by remember { mutableStateOf("") }
-    var Address by remember { mutableStateOf("") }
+    var Course by remember { mutableStateOf("") }
+    var CurrentSemester by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
 
     val context = LocalContext.current
@@ -118,7 +120,7 @@ fun FillActivityScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(BlueShade)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
@@ -134,7 +136,7 @@ fun FillActivityScreen() {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.Black),
+                        .background(BlueShade),
 
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -185,26 +187,26 @@ fun FillActivityScreen() {
                         )
                     )
 
-                    DOBDateField(
-                        label = "Date of Birth",
-                        value = dobDate,
-                        onClick = {
-                            val today = Calendar.getInstance().apply {
-                                set(Calendar.HOUR_OF_DAY, 0)
-                                set(Calendar.MINUTE, 0)
-                                set(Calendar.SECOND, 0)
-                                set(Calendar.MILLISECOND, 0)
-                            }.timeInMillis
-
-                            openDatePicker({ dobDate = it }, 1990)
-                        }
-                    )
+//                    DOBDateField(
+//                        label = "Date of Birth",
+//                        value = dobDate,
+//                        onClick = {
+//                            val today = Calendar.getInstance().apply {
+//                                set(Calendar.HOUR_OF_DAY, 0)
+//                                set(Calendar.MINUTE, 0)
+//                                set(Calendar.SECOND, 0)
+//                                set(Calendar.MILLISECOND, 0)
+//                            }.timeInMillis
+//
+//                            openDatePicker({ dobDate = it }, 1990)
+//                        }
+//                    )
 
 
                     OutlinedTextField(
-                        value = CompanyName,
-                        onValueChange = { CompanyName = it },
-                        label = { Text("Company Name") },
+                        value = Course,
+                        onValueChange = { Course = it },
+                        label = { Text("Course / Class") },
                         modifier = Modifier.fillMaxWidth(),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedContainerColor = Color.LightGray,
@@ -216,9 +218,9 @@ fun FillActivityScreen() {
                     )
 
                     OutlinedTextField(
-                        value = Address,
-                        onValueChange = { Address = it },
-                        label = { Text("Address") },
+                        value = CurrentSemester,
+                        onValueChange = { CurrentSemester = it },
+                        label = { Text("Current Semester / Year") },
                         modifier = Modifier.fillMaxWidth(),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedContainerColor = Color.LightGray,
@@ -296,11 +298,11 @@ fun FillActivityScreen() {
                                     errorMessage = "Please enter your full name."
                                 }
 
-                                CompanyName.isBlank() -> {
+                                Course.isBlank() -> {
                                     errorMessage = "Please enter your company name."
                                 }
 
-                                Address.isBlank() -> {
+                                CurrentSemester.isBlank() -> {
                                     errorMessage = "Please enter your address."
                                 }
 
@@ -327,7 +329,7 @@ fun FillActivityScreen() {
                             .fillMaxWidth()
                             .height(50.dp),
                         shape = RoundedCornerShape(8.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Blue)
                     ) {
                         Text(text = "Sign Up", color = Color.White)
                     }

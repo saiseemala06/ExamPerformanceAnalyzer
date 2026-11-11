@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.saiseemala.examperformanceanalyzer.ui.theme.BlueShade
 import com.saiseemala.examperformanceanalyzer.ui.theme.ExamPerformanceTheme
 import kotlinx.coroutines.delay
 
@@ -94,7 +95,7 @@ fun ExamPerformanceSplash() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorResource(id = R.color.black)),
+            .background(BlueShade),
         contentAlignment = Alignment.Center
     ) {
         Column(

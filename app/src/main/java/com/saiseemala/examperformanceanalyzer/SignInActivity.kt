@@ -50,6 +50,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.database.FirebaseDatabase
+import com.saiseemala.examperformanceanalyzer.ui.theme.BlueShade
 
 class SignInActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +79,7 @@ fun EnterActivityScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(BlueShade)
     ) {
         Column(
             modifier = Modifier
@@ -89,7 +90,7 @@ fun EnterActivityScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .background(Color.Black)
+                    .background(BlueShade)
                     .padding(32.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -202,7 +203,7 @@ fun EnterActivityScreen() {
                             .fillMaxWidth()
                             .height(50.dp),
                         shape = RoundedCornerShape(8.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Blue)
                     ) {
                         Text(text = "Login", color = Color.White)
                     }
